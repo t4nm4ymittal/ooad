@@ -1,0 +1,99 @@
+#include <iostream>
+using namespace std;
+class Student {
+protected:
+string name;
+int age;
+public:
+Student(string n, int a) {
+name = n;
+age = a;
+}
+void display() {
+cout<<"Base Class:Student\n";
+cout << "Name: " << name << endl;
+cout << "Age: " << age << endl;
+cout<<endl;
+}
+};
+class UndergraduateStudent : public Student {
+protected:
+int year;
+public:
+UndergraduateStudent(string n, int a, int y) : Student(n, a) {
+year = y;
+}
+void display() {
+Student::display();
+
+cout<<"Base Class:Undergrad"<<endl;
+cout << "Year: " << year << endl<<endl;;
+}
+};
+class GraduateStudent : public Student {
+protected:
+string program;
+public:
+GraduateStudent(string n, int a, string p) : Student(n, a) {
+program = p;
+}
+void display() {
+Student::display();
+cout<<"Base Clsass Graduate"<<endl;
+cout << "Program:" << program << endl<<endl;;
+}
+};
+class Freshman : public UndergraduateStudent {
+public:
+Freshman(string n, int a) : UndergraduateStudent(n, a, 1) {}
+};
+class Sophomore : public UndergraduateStudent {
+public:
+Sophomore(string n, int a) : UndergraduateStudent(n, a, 2) {}
+};
+class Junior : public UndergraduateStudent {
+public:
+Junior(string n, int a) : UndergraduateStudent(n, a, 3) {}
+};
+class Senior : public UndergraduateStudent {
+public:
+Senior(string n, int a) : UndergraduateStudent(n, a, 4) {}
+};
+class DoctoralStudent : public GraduateStudent {
+public:
+DoctoralStudent(string n, int a) : GraduateStudent(n, a, "Doctoral") {}
+};
+class MastersStudent : public GraduateStudent {
+public:
+MastersStudent(string n, int a) : GraduateStudent(n, a, "Masters") {}
+};
+int main() {
+cout<<"student:\n\n";
+
+Student s1("Alice", 20);
+s1.display();
+cout<<"undegrad\n\n";
+UndergraduateStudent u("Bob", 19, 2);
+u.display();
+cout<<"graduate\n\n";
+GraduateStudent g("Charlie", 25, "PhD");
+g.display();
+cout<<"Freshman\n\n";
+Freshman f("Rohit",18);
+f.display();
+cout<<"Senior\n\n";
+Senior s2("Kapil",23);
+s2.display();
+cout<<"Doctoral\n\n";
+DoctoralStudent d("Amit",26);
+d.display();
+cout<<"Masters\n\n";
+MastersStudent m("Gaurav",24);
+m.display();
+cout<<"Sophomore\n\n";
+Sophomore s3("Rahul",20);
+s3.display();
+cout<<"Junior\n\n";
+Junior j("Vijay",21);
+j.display();
+}
